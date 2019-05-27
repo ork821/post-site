@@ -36,6 +36,13 @@
     margin: 10px;
 }
 
+.navbar-collapse a:not(:first-child):hover{
+    background-color: #343A40;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
 .form-inline{
     margin-left: 50px;
     margin-right: 50px;
