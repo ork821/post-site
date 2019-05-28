@@ -1,3 +1,27 @@
+//Functions
+//
+function enterClick() {
+    let elem_pos = $('.main-text p.post-title:focus').caret('pos'); //gets position of caret
+    let text = $('.main-text p.post-title:focus').text(); //gets text from focused element
+    let text_next = text.slice(elem_pos); //contains text after caret
+    let text_prev = text.slice(0, elem_pos);  //contains text before caret
+
+    $('.main-text p.post-title:focus').empty().text(text_prev); //puts text before caret into focused element
+
+    $('<p class="post-title" contenteditable="true">'+ String(text_next) + '</p>').insertAfter($(".main-text" +
+        " p.post-title:focus")); //insert paragraph after focused element with text after caret
+    $('.main-text p.post-title:focus').next().focus(); //focus on next element
+}
+
+//function with deletes paragraph if it's empty
+function deleteParagraph() {
+    $('.main-text p.post-title:focus').prev().focus();
+    let el = $('.main-text p.post-title:focus').text().length;
+    $('.main-text p.post-title:focus').caret('pos', el); //set caret position on last char of string
+    $('.main-text p.post-title:focus').next().detach(":empty"); //deleting element if empty
+}
+
+
 jQuery(function($){
     let keys = {
         'BACKSPACE': 8,
@@ -28,8 +52,7 @@ jQuery(function($){
 
             case (keys['ENTER']):
                 e.preventDefault();
-                $(".main-text").append('<p class="post-title" contenteditable="true"></p>');
-                $('.main-text p.post-title:focus').next().focus();
+                enterClick();
                 break;
 
             case (keys['BACKSPACE']):
@@ -37,12 +60,21 @@ jQuery(function($){
                     return;
                 } else if ($('.main-text p.post-title:focus').is(':empty')){
                     e.preventDefault();
-                    $('.main-text p.post-title:focus').prev().focus();
-                    let el = $('.main-text p.post-title:focus').text().length;
-                    $('.main-text p.post-title:focus').caret('pos', el);
-                    $('.main-text p.post-title:focus').next().detach(":empty");
+                    delete_paragraph();
                 }
+                break;
 
+            case (keys['UP']):
+                $('.main-text p.post-title:focus').prev().focus();
+
+                let el = $('.main-text p.post-title:focus').text().length;
+                $('.main-text p.post-title:focus').caret('pos', el);//set caret position on last char of string
+                break;
+
+            case (keys['DOWN']):
+                if ($('.main-text p.post-title:focus').next()){
+                    $('.main-text p.post-title:focus').next().focus();
+                }
                 break;
         }
     });
@@ -57,3 +89,5 @@ jQuery(function($){
 
 
 });
+
+
