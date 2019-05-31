@@ -70,12 +70,12 @@ $(document).ready(function($) {
     });*/
 
 
-    $(document).on('mousedown', function () {
-        let target = $('.maintext .post-title:focus');
-        if (target.text() != ''){
+    $(document).on('mousemove', function () {
+        if ($('.post-title:focus')) {
+            let target = $('.post-title:focus');
             $('.h-btns span').on('click', function (e) {
-                $('.h-btns').children().removeClass('active').addClass('disabled');
-                $(this).removeClass('disabled').addClass('active');
+                $('.h-btns').children().removeClass('active');
+                $(this).addClass('active');
                 let text = target.text();
                 switch (e.target.id) {
                     case 'h2':
@@ -113,13 +113,21 @@ $(document).ready(function($) {
         }
     });
 
+    //Определяет какой тег у нас выделен и делает активной нужную кнопку
+    $('.post-title').on('click', function () {
+        if ($('.post-title').is(':focus')) {
+            let target = $('.post-title:focus');
+            let tag = get_tag_name(target);
+            $('.h-btns').children().removeClass('active');
+            $('#' + tag).addClass('active');
+        }
 
-    $('.maintext .post-title').on('focus', function () {
-        let target = $('.maintext .post-title:focus');
-        let tag = get_tag_name(target);
-        $('.h-btns').children().removeClass('active').addClass('disabled');
-        $('#' + tag).removeClass('disabled').addClass('active');
     });
+
+
+
+
+
 
 
 

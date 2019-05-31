@@ -13,7 +13,7 @@ function enterClick() {
             " .post-title:focus")); //insert paragraph after focused element with text after caret
         $('.maintext .post-title:focus').next().focus(); //focus on next element
 
-        $('.h-btns').children().removeClass('active').addClass('disabled');
+
     }
 }
 
