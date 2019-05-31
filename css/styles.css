@@ -1,9 +1,21 @@
+.disabled{
+    background-color: #343A40;
+    color: white;
+}
+
+.active{
+    background-color: #bfbfbf;
+    color: #343A40;
+}
+
+
+
+
 .main-content{
     margin-top: 30px;
 }
 
-.post-title,
-.author-name,
+.title,
 .post-title{
     width: auto;
     height: auto;
@@ -13,15 +25,13 @@
 }
 
 .post-title[placeholder]:empty:before,
-.author-name[placeholder]:empty:before,
-.post-title[placeholder]:empty:before{
+.title[placeholder]:empty:before{
     content: attr(placeholder);
     color: #555;
 }
 
 .post-title[placeholder]:empty:focus:before,
-.author-name[placeholder]:empty:focus:before,
-.post-title[placeholder]:empty:focus:before{
+.title[placeholder]:empty:focus:before{
     content: "";
 }
 
@@ -48,3 +58,16 @@
     margin-right: 50px;
 }
 
+aside.sidebar{
+    height: 300px;
+    width: 100%;
+}
+
+
+.h-btns span{
+    cursor: pointer;
+    border: 1px solid #000000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}

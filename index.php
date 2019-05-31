@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-lg-9 offset-lg-1">
 
-            <div class="main-text">
-                <h1 class="post-title" contenteditable="true" placeholder="Заголовок статьи"></h1>
+
+                <h1 class="title" contenteditable="true" placeholder="Заголовок статьи"></h1>
                 <i>Имя автора</i>
                 <hr>
-
+            <div class="maintext">
                 <p class="post-title" id="first_el" contenteditable="true" placeholder="Ваша история..."></p>
 
             </div>
