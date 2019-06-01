@@ -31,19 +31,11 @@ function caretPos() {
     $('.maintext .post-title:focus').caret('pos', el);
 }
 
-function getSelectionText() {
-    var txt = '';
-    if (txt = window.getSelection) { // Не IE, используем метод getSelection
-        txt = window.getSelection().toString();
-    } else { // IE, используем объект selection
-        txt = document.selection.createRange().text;
-    }
-    return txt;
-}
-
 
 function get_tag_name(target) {
     let tag = $(target).get(0).tagName;
     return tag.toLowerCase();
 }
+
+
 

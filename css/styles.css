@@ -1,10 +1,10 @@
 .disabled{
     background-color: #343A40;
-    color: white;
+    color: #F8F9FA;
 }
 
 .active{
-    background-color: #bfbfbf;
+    background-color: #F8F9FA;
     color: #343A40;
 }
 
@@ -60,14 +60,20 @@
 
 aside.sidebar{
     height: 300px;
-    width: 100%;
+    position: fixed;
+
 }
 
 
-.h-btns span{
+span{
+    text-align: center;
+    height: content-box;
+    width: 25%;
     cursor: pointer;
     border: 1px solid #000000;
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px auto;
+
 }
+

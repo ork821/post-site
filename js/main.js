@@ -24,7 +24,6 @@ $(document).ready(function($) {
 
 
     //Обработка нажатий кнопок
-
     $(document).on('keydown', function (e) {
         switch (e.which) {
 
@@ -75,52 +74,97 @@ $(document).ready(function($) {
         if ($('.post-title').is(':focus')) {
             let target = $('.post-title:focus');
             let tag = get_tag_name(target);
-            $('.h-btns').children().removeClass('active');
+            $('.h-btns .container .row').children().removeClass('active');
             $('#' + tag).addClass('active');
         };
 
         $('.h-btns span').on('mousedown', function (e) {
-            $('.h-btns').children().removeClass('active');
+            $('.h-btns .container .row').children().removeClass('active');
             $(this).addClass('active');
 
             let target = $('.maintext .post-title:focus');
             let text = target.text();
-
-
             switch (e.target.id) {
                 case 'h2':
                     $('<h2 class="post-title" contenteditable="true">' + text + '</h2>').insertAfter(target);
                     target.remove();
                     break;
+
                 case 'h3':
                     $('<h3 class="post-title" contenteditable="true">' + text + '</h3>').insertAfter(target);
                     target.remove();
-
                     break;
+
                 case 'h4':
                     $('<h4 class="post-title" contenteditable="true">' + text + '</h4>').insertAfter(target);
                     target.remove();
-
                     break;
+
                 case 'h5':
                     $('<h5 class="post-title" contenteditable="true">' + text + '</h5>').insertAfter(target);
                     target.remove();
-
                     break;
+
                 case 'h6':
                     $('<h6 class="post-title" contenteditable="true">' + text + '</h6>').insertAfter(target);
                     target.remove();
-
                     break;
+
                 case 'p':
                     $('<p class="post-title" contenteditable="true">' + text + '</p>').insertAfter(target);
                     target.remove();
-
                     break;
+
 
             }
         });
 
+
+    });
+
+
+    $(document).on('mouseup', function () {
+        let selection = document.getSelection().toString();
+        console.log(selection);
+        if (selection != '') {
+
+            if ($('.post-title').is(':focus')) {
+                let target = $('.post-title:focus');
+                let tag = get_tag_name(target);
+                $('.text-style .container .row').children().removeClass('active');
+                $('#' + tag).addClass('active');
+            }
+
+
+            $('.text-style span').on('mousedown', function (e) {
+                $('.text-style .container .row').children().removeClass('active');
+                $(this).addClass('active');
+                let target = $('.maintext p.post-title:focus');
+                let target_html = target[0].outerHTML;
+                if (target_html){
+                    let arr = target_html.split(selection);
+                    switch (e.target.id) {
+                        case 'b':
+                            $(arr[0] + '<b>' + selection + '</b>' + arr[1]).insertAfter(target);
+                            target.remove();
+
+                            break;
+
+                        case 'i':
+                            $(arr[0] + '<i>' + selection + '</i>' + arr[1]).insertAfter(target);
+                            target.remove();
+
+                            break;
+
+                        case 'code':
+                            $(arr[0] + '<code>' + selection + '</code>' + arr[1]).insertAfter(target);
+                            target.remove();
+
+                            break;
+                    }
+                }
+            })
+        }
     });
 
 
