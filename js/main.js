@@ -70,73 +70,76 @@ $(document).ready(function($) {
     });*/
 
 
-    $(document).on('mousemove', function () {
-        if ($('.post-title:focus')) {
-            let target = $('.post-title:focus');
-            $('.h-btns span').on('click', function (e) {
-                $('.h-btns').children().removeClass('active');
-                $(this).addClass('active');
-                let text = target.text();
-                switch (e.target.id) {
-                    case 'h2':
-                        $('<h2 class="post-title" contenteditable="true">' + text + '</h2>').insertAfter(target);
-                        target.remove();
-                        break;
-                    case 'h3':
-                        $('<h3 class="post-title" contenteditable="true">' + text + '</h3>').insertAfter(target);
-                        target.remove();
+    $(document).on('focus', '.post-title', function () {
 
-                        break;
-                    case 'h4':
-                        $('<h4 class="post-title" contenteditable="true">' + text + '</h4>').insertAfter(target);
-                        target.remove();
-
-                        break;
-                    case 'h5':
-                        $('<h5 class="post-title" contenteditable="true">' + text + '</h5>').insertAfter(target);
-                        target.remove();
-
-                        break;
-                    case 'h6':
-                        $('<h6 class="post-title" contenteditable="true">' + text + '</h6>').insertAfter(target);
-                        target.remove();
-
-                        break;
-                    case 'p':
-                        $('<p class="post-title" contenteditable="true">' + text + '</p>').insertAfter(target);
-                        target.remove();
-
-                        break;
-
-                }
-            });
-        }
-    });
-
-    //Определяет какой тег у нас выделен и делает активной нужную кнопку
-    $('.post-title').on('click', function () {
         if ($('.post-title').is(':focus')) {
             let target = $('.post-title:focus');
             let tag = get_tag_name(target);
             $('.h-btns').children().removeClass('active');
             $('#' + tag).addClass('active');
-        }
+        };
+
+        $('.h-btns span').on('mousedown', function (e) {
+            $('.h-btns').children().removeClass('active');
+            $(this).addClass('active');
+
+            let target = $('.maintext .post-title:focus');
+            let text = target.text();
+
+
+            switch (e.target.id) {
+                case 'h2':
+                    $('<h2 class="post-title" contenteditable="true">' + text + '</h2>').insertAfter(target);
+                    target.remove();
+                    break;
+                case 'h3':
+                    $('<h3 class="post-title" contenteditable="true">' + text + '</h3>').insertAfter(target);
+                    target.remove();
+
+                    break;
+                case 'h4':
+                    $('<h4 class="post-title" contenteditable="true">' + text + '</h4>').insertAfter(target);
+                    target.remove();
+
+                    break;
+                case 'h5':
+                    $('<h5 class="post-title" contenteditable="true">' + text + '</h5>').insertAfter(target);
+                    target.remove();
+
+                    break;
+                case 'h6':
+                    $('<h6 class="post-title" contenteditable="true">' + text + '</h6>').insertAfter(target);
+                    target.remove();
+
+                    break;
+                case 'p':
+                    $('<p class="post-title" contenteditable="true">' + text + '</p>').insertAfter(target);
+                    target.remove();
+
+                    break;
+
+            }
+        });
 
     });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
